@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <title>Angular QuickStart</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- 1. Load libraries -->
-     <!-- Polyfill(s) for older browsers -->
-    <script src="https://unpkg.com/core-js/client/shim.min.js"></script>
-
-    <script src="https://unpkg.com/zone.js@0.6.25?main=browser"></script>
-    <script src="https://unpkg.com/reflect-metadata@0.1.3"></script>
-    <script src="https://unpkg.com/systemjs@0.19.27/dist/system.src.js"></script>
-
-    <!-- 2. Configure SystemJS -->
-    <script src="systemjs.config.js"></script>
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
+    <base href="." />
+    <script type="text/javascript" charset="utf-8">
+      window.AngularVersionForThisPlunker = 'latest'
     </script>
+    <title>angular playground</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://unpkg.com/core-js@2.4.1/client/shim.min.js"></script>
+      <script src="https://unpkg.com/zone.js/dist/zone.js"></script>
+    <script src="https://unpkg.com/zone.js/dist/long-stack-trace-zone.js"></script>
+    <script src="https://unpkg.com/reflect-metadata@0.1.3/Reflect.js"></script>
+    <script src="https://unpkg.com/systemjs@0.19.31/dist/system.js"></script>
+    <script src="config.js"></script>
+    
+  <script>   
+  $(document).ready(function() {
+    $("input#myField").autocomplete({
+            source: ["c++", "java", "php", "coldfusion", "javascript", "asp", "ruby"],
+            response: function(event, ui) {
+            // ui.content is the array that's about to be sent to the response callback.
+            if (ui.content.length === 0) {
+                $("#empty-message").text("No results found");
+            } else {
+                $("#empty-message").empty();
+            }
+        }
+        });              
+});
+  </script>
+
+<script>
+    System.import('app')
+      .catch(console.error.bind(console));
+  </script>
   </head>
 
-  <!-- 3. Display the application -->
   <body>
-    <my-app>Loading...</my-app>
+    <my-app>
+    loading...
+  </my-app>
   </body>
+
 </html>
-
-
-<!-- 
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
--->
